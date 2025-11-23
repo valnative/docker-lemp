@@ -13,8 +13,8 @@ Lightweight LEMP (Linux, Nginx, MySQL/MariaDB, PHP-FPM) stack configured for loc
 ## Installation
 1. Clone the repository:
     ```
-    git clone <repo-url> lemp-docker
-    cd lemp-docker
+    git clone git@github.com:valnative/docker-lemp.git
+    cd docker-lemp
     ```
 2. Copy and configure environment:
     ```
@@ -23,7 +23,7 @@ Lightweight LEMP (Linux, Nginx, MySQL/MariaDB, PHP-FPM) stack configured for loc
     ```
 3. Start services:
     ```
-    docker compose up -d
+    docker compose up -d --build
     ```
 4. Verify:
     - Web: http://localhost (or custom PORT in .env)
@@ -32,28 +32,6 @@ Lightweight LEMP (Linux, Nginx, MySQL/MariaDB, PHP-FPM) stack configured for loc
     ```
     docker compose down
     ```
-
-## Project structure
-/
-- docker-compose.yml                # Compose definition for nginx, php-fpm, db, etc.
-- .env.example                      # Example environment variables
-- README.md
-- nginx/
-  - Dockerfile
-  - conf.d/
-     - default.conf                   # Nginx site configuration
-- php/
-  - Dockerfile
-  - php.ini
-- db/
-  - Dockerfile or my.cnf
-  - initdb/                          # Optional database initialization scripts
-- www/ or html/                      # Document root for your PHP application
-- data/                              # Persistent volumes (db data, nginx logs)
-- scripts/                           # Helper scripts (backups, migrations)
-
-
-
 
 Notes:
 - Keep secrets out of the repository; use .env and Docker secrets for sensitive data.
